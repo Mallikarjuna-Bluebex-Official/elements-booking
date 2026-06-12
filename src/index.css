@@ -1,0 +1,239 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Roboto+Condensed:wght@400;700&family=Roboto+Slab:wght@400;700&display=swap');
+@import "tailwindcss";
+
+/* You can now write your styles here */
+h1 {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+h4 {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+body {
+  position: relative;
+  background-image: url('./assets/img_2.jpg');
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+/* Light overlay to make the background image appear lighter */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0); /* Adjust the 0.4 to control brightness */
+  z-index: 0;
+  pointer-events: none; /* Allows clicks to pass through */
+}
+
+/* Ensure content appears above the overlay */
+body > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* styles.css or index.css */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;    /* Firefox */
+  }
+
+@media (max-width: 500px) {
+  .custom-img {
+    width: 100%;
+  }
+
+  .custom-calendar {
+    width: 100%;
+  }
+  
+}
+
+@media (min-width: 501px) and (max-width: 600px) {
+  .custom-img {
+    width: 650px;
+  }
+   
+}
+
+@media (min-width: 601px) and (max-width: 767px) {
+  .custom-img {
+    width: 700px;
+  }
+}
+
+.glowing-box {
+   /*optional, for smooth edges */
+  box-shadow: 0 0 10px rgba(255, 255, 255, 1); 
+}
+  
+  .glow-button::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(59,130,246,0.4), transparent 70%);
+    animation: glowWave 3s ease-in-out infinite;
+    z-index: -1;
+    opacity: 0.6;
+  }
+  
+  @keyframes glowWave {
+    0%, 100% {
+      transform: rotate(0deg) scale(1);
+    }
+    50% {
+      transform: rotate(180deg) scale(1.05);
+    }
+  }
+  
+  @keyframes shimmer {
+    0% {
+      left: -100%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+  
+  @keyframes zoomInOut {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+  }
+  
+  .zoom-shimmer-button {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(to right, #3b82f6, #6366f1); 
+    color: white;
+    animation: zoomInOut 2.5s infinite ease-in-out;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .zoom-shimmer-button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      120deg,
+      transparent,
+      rgba(233, 213, 255, 0.4)
+      transparent
+    );
+    transform: skewX(-20deg);
+    animation: shimmer 2.5s infinite;
+  }
+  
+
+  @keyframes shatter-border {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  .shatter-border-button {
+    position: relative;
+    color: white;
+    background: linear-gradient(to right, #3b82f6, #6366f1);  /* indigo-500 to purple-400 */
+    padding: 1.25rem 9.5rem;
+    border-radius: 0.5rem;
+    z-index: 0;
+    overflow: hidden;
+    animation: zoomInOut 2.5s infinite ease-in-out;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .shatter-border-button::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(
+      45deg,
+      #8b5cf6,
+      #22d3ee
+     
+    );
+    background-size: 400%;
+    animation: shatter-border 6s linear infinite;
+    border-radius: 0.75rem;
+    filter: blur(4px);
+  }
+  
+
+@layer utilities {
+
+  @keyframes grow {
+    from {
+      width: 0;
+    }
+    to {
+      width: 90%;
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.8s ease-out both;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.8s ease-out both;
+  }
+
+  .animate-grow {
+    animation: grow 1s ease-out forwards;
+  }
+}
+
+@keyframes beat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.beat {
+  animation: beat 5s infinite ease-in-out;
+}
+
+@keyframes beat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+.beating {
+  animation: beat 1.8s infinite;
+}
