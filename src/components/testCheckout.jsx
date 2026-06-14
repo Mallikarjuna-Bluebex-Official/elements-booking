@@ -640,7 +640,7 @@ const UserDetails = () => {
         position: 'sticky', top: 0, zIndex: 40,
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-          <img src="./logo.png" alt="logo" className="w-14 h-10" />
+          <img src="./logo.png" alt="no logo" className='w-14 h-10'/>
           <div style={{ lineHeight: 1 }}>
             <div style={{ fontFamily: "'DM Serif Display', serif", fontSize: 20, color: T.ink, letterSpacing: '-0.02em' }}>Elements on East Coast</div>
             <div style={{ fontSize: 12, fontWeight: 300, color: T.inkLight, marginTop: 1 }}>Photo Shoots · Chennai</div>
