@@ -501,7 +501,7 @@ const UserDetails = () => {
   }, [formData.email]);
 
   useEffect(() => {
-    fetch(backendUrl + "/api/user/active-gateway")
+    fetch("https://elementsoneastcoast.com/api/user/active-gateway")
       .then(r => r.json())
       .then(d => setGateway(d.gateway))
       .catch(console.error);
@@ -561,7 +561,7 @@ const UserDetails = () => {
   const handlePayuPayment = async () => {
     sessionStorage.setItem("skipReloadRedirect", "true");
     try {
-      const { data } = await axios.post(backendUrl + "/api/user/pay", {
+      const { data } = await axios.post("https://elementsoneastcoast.com/api/user/pay", {
         amount: totalAmount,
         productInfo: bookingData.services.map(s => s.name).join(", "),
         firstName: formData.fullName, email: formData.email, phone: formData.contactNumber,
@@ -580,7 +580,7 @@ const UserDetails = () => {
   const handlePhonepePayment = async () => {
     sessionStorage.setItem("skipReloadRedirect", "true");
     try {
-      const { data } = await axios.post(backendUrl + "/api/user/initiate-payment", {
+      const { data } = await axios.post("https://elementsoneastcoast.com/api/user/initiate-payment", {
         totalAmount, orderId: "ORDER_" + Date.now(),
       });
       if (data.success) window.location.href = data.data.instrumentResponse.redirectInfo.url;
@@ -599,7 +599,7 @@ const UserDetails = () => {
     sessionStorage.setItem("skipReloadRedirect", "true");
     if (!(await loadRazorpayScript())) { alert("Failed to load Razorpay."); setPayLoading(false); return; }
     try {
-      const { data } = await axios.post(backendUrl + "/api/user/create-order", { totalAmount, currency: "INR" });
+      const { data } = await axios.post("https://elementsoneastcoast.com/api/user/create-order", { totalAmount, currency: "INR" });
       new window.Razorpay({
         key: import.meta.env.VITE_RAZORPAY_KEY_ID,
         amount: data.amount, currency: data.currency,
@@ -617,7 +617,7 @@ const UserDetails = () => {
   const handlePaypalPayment = async () => {
     sessionStorage.setItem("skipReloadRedirect", "true");
     try {
-      const { data } = await axios.post(backendUrl + "/api/user/create-payment", { totalAmount });
+      const { data } = await axios.post("https://elementsoneastcoast.com/api/user/create-payment", { totalAmount });
       if (data?.approvalUrl) window.location.href = data.approvalUrl;
       else setPayLoading(false);
     } catch { setPayLoading(false); }
