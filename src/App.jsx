@@ -14,8 +14,8 @@ function App() {
         <Routes>
           <Route path='/booking' element={<TestServices />} />
            <Route path='/user' element={<TestUserDetails/>} />
-          <Route path='/success' element={<PaymentSuccess />} />
-          <Route path='/failure' element={<PaymentFailure />} />
+          <Route path='/booking/success' element={<PaymentSuccess />} />
+          <Route path='/booking/failure' element={<PaymentFailure />} />
         </Routes>
       </Router>
     </div>
