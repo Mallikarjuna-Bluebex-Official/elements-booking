@@ -26,9 +26,7 @@ const AddOn = () => {
 
       try {
 
-        const response = await axios.get(
-          backendUrl + '/api/user/getAddOn'
-        );
+        const response = await axios.get('https://elementsoneastcoast.com/api/user/getAddOn');
 
         const fetchedAddOns = response.data.map((addOn) => ({
           ...addOn,
