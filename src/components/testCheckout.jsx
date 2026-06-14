@@ -523,7 +523,7 @@ const UserDetails = () => {
   const submitBooking = async () => {
     const data = { ...bookingData, userInfo: { ...formData, contactNumber: phone } };
     dispatch(updateBookingData(data));
-    const res = await axios.post(`${backendUrl}/api/user/booking`, data);
+    const res = await axios.post(`https://elementsoneastcoast.com/api/user/booking`, data);
     sessionStorage.setItem("bookingId", res.data.bookingId);
   };
 
