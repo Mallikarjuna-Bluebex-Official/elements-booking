@@ -50,7 +50,7 @@ const PaymentSuccess = () => {
         setLoading(true);
 
         // 1. Fetch user info
-        const userRes = await axios.get(`${backendUrl}/api/admin/get-userinfo/${bookingId}`);
+        const userRes = await axios.get(`https://elementsoneastcoast.com/api/admin/get-userinfo/${bookingId}`);
         const fullUserData = userRes.data;
 
         //console.log("fullUserData",fullUserData)
@@ -81,7 +81,7 @@ const PaymentSuccess = () => {
    
 
         // 2. Fetch company info
-        const companyRes = await axios.get(backendUrl+'/api/admin/get-invoiceinfo');
+        const companyRes = await axios.get('https://elementsoneastcoast.com/api/admin/get-invoiceinfo');
         const fullCompanyData = companyRes.data;
 
         console.log("fullCompanyData",fullCompanyData)
@@ -103,7 +103,7 @@ const PaymentSuccess = () => {
 
         //console.log("Payload: ",payload)
 
-       const invoiceRes = await axios.post(backendUrl+'/api/admin/generate-invoice', payload);
+       const invoiceRes = await axios.post('https://elementsoneastcoast.com/api/admin/generate-invoice', payload);
        console.log("invoice response: ",invoiceRes.data);
        setInvoiceData(invoiceRes.data);
 
@@ -134,7 +134,7 @@ const PaymentSuccess = () => {
      //console.log("Calling updatePaymentStatus...");
 
       try {
-          await axios.put(`${backendUrl}/api/user/bookings/${bookingId}/payment-status`, {
+          await axios.put(`https://elementsoneastcoast.com/api/user/bookings/${bookingId}/payment-status`, {
           paymentStatus: statusParam,
           selectedDate: selectedDateParam,
           services: servicesParam
@@ -142,7 +142,7 @@ const PaymentSuccess = () => {
         console.log('Payment status updated successfully');
 
         // Send confirmation email after payment update
-        await axios.post(backendUrl+'/api/admin/booking/send-confirmation-email', {
+        await axios.post('https://elementsoneastcoast.com/api/admin/booking/send-confirmation-email', {
           bookingId,
         });
         console.log('Confirmation email sent successfully');
