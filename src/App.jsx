@@ -12,7 +12,7 @@ function App() {
       <ToastContainer />
       <Router>
         <Routes>
-          <Route path='/' element={<TestServices />} />
+          <Route path='/booking' element={<TestServices />} />
            <Route path='/user' element={<TestUserDetails/>} />
           <Route path='/success' element={<PaymentSuccess />} />
           <Route path='/failure' element={<PaymentFailure />} />
