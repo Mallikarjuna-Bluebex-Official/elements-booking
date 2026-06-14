@@ -611,7 +611,7 @@ useEffect(() => {
       setLoading(true);
 
       const res = await axios.get(
-        'http://localhost:5000/api/user/get-event',
+        'https://elementsoneastcoast.com/api/user/get-event',
         {
           params: {
             date: bookingData.selectedDate, // ✅ IMPORTANT
