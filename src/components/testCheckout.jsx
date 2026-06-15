@@ -10,6 +10,7 @@ import { Helmet } from "react-helmet";
 import { motion, AnimatePresence } from "framer-motion";
 import { useSelector, useDispatch } from "react-redux";
 import { setSelectedDate, setServices, setAddOns,  updateBookingData} from "../redux/booking/bookingSlice";
+import logo from "../assets/logo.png";
 
 /* ─── Design tokens ───────────────────────────────────────────────────────── */
 const T = {
@@ -640,7 +641,7 @@ const UserDetails = () => {
         position: 'sticky', top: 0, zIndex: 40,
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-          <img src="./booking/logo.png" alt="no logo" className='w-14 h-10'/>
+          <img src={logo} alt="no logo" className='w-14 h-10'/>
           <div style={{ lineHeight: 1 }}>
             <div style={{ fontFamily: "'DM Serif Display', serif", fontSize: 20, color: T.ink, letterSpacing: '-0.02em' }}>Elements on East Coast</div>
             <div style={{ fontSize: 12, fontWeight: 300, color: T.inkLight, marginTop: 1 }}>Photo Shoots · Chennai</div>
