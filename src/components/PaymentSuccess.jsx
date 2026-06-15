@@ -183,7 +183,7 @@ const PaymentSuccess = () => {
     const invoiceLockKey = `invoiceGenerated-${bookingId}`;
     sessionStorage.removeItem(invoiceLockKey);
     sessionStorage.removeItem('bookingId');
-    navigate('/');
+    navigate('/booking');
   } catch (err) {
     console.error('Navigation error:', err);
   } finally {
