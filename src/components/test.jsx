@@ -611,7 +611,7 @@ useEffect(() => {
       setLoading(true);
 
       const res = await axios.get(
-        'http://localhost:5000/api/user/get-event',
+        'https://elementsoneastcoast.com/api/user/get-event',
         {
           params: {
             date: bookingData.selectedDate, // ✅ IMPORTANT
@@ -962,7 +962,7 @@ useEffect(() => {
                   Back
                 </button>
                 <motion.button
-                  onClick={() => { setShowAddOn(false); navigate('/user'); }}
+                  onClick={() => { setShowAddOn(false); navigate('/booking/attendees'); }}
                   whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
                   style={{ padding: '9px 26px', borderRadius: 12, border: 'none', background: T.ink, fontSize: 13, fontWeight: 600, color: T.goldLight, cursor: 'pointer', fontFamily: "'DM Sans', sans-serif", display: 'flex', alignItems: 'center', gap: 7 }}
                 >

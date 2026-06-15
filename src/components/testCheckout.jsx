@@ -10,6 +10,7 @@ import { Helmet } from "react-helmet";
 import { motion, AnimatePresence } from "framer-motion";
 import { useSelector, useDispatch } from "react-redux";
 import { setSelectedDate, setServices, setAddOns,  updateBookingData} from "../redux/booking/bookingSlice";
+import logo from "../assets/logo.png";
 
 /* ─── Design tokens ───────────────────────────────────────────────────────── */
 const T = {
@@ -501,7 +502,7 @@ const UserDetails = () => {
   }, [formData.email]);
 
   useEffect(() => {
-    fetch(backendUrl + "/api/user/active-gateway")
+    fetch("https://elementsoneastcoast.com/api/user/active-gateway")
       .then(r => r.json())
       .then(d => setGateway(d.gateway))
       .catch(console.error);
@@ -523,7 +524,7 @@ const UserDetails = () => {
   const submitBooking = async () => {
     const data = { ...bookingData, userInfo: { ...formData, contactNumber: phone } };
     dispatch(updateBookingData(data));
-    const res = await axios.post(`${backendUrl}/api/user/booking`, data);
+    const res = await axios.post(`https://elementsoneastcoast.com/api/user/booking`, data);
     sessionStorage.setItem("bookingId", res.data.bookingId);
   };
 
@@ -561,7 +562,7 @@ const UserDetails = () => {
   const handlePayuPayment = async () => {
     sessionStorage.setItem("skipReloadRedirect", "true");
     try {
-      const { data } = await axios.post(backendUrl + "/api/user/pay", {
+      const { data } = await axios.post("https://elementsoneastcoast.com/api/user/pay", {
         amount: totalAmount,
         productInfo: bookingData.services.map(s => s.name).join(", "),
         firstName: formData.fullName, email: formData.email, phone: formData.contactNumber,
@@ -580,7 +581,7 @@ const UserDetails = () => {
   const handlePhonepePayment = async () => {
     sessionStorage.setItem("skipReloadRedirect", "true");
     try {
-      const { data } = await axios.post(backendUrl + "/api/user/initiate-payment", {
+      const { data } = await axios.post("https://elementsoneastcoast.com/api/user/initiate-payment", {
         totalAmount, orderId: "ORDER_" + Date.now(),
       });
       if (data.success) window.location.href = data.data.instrumentResponse.redirectInfo.url;
@@ -599,7 +600,7 @@ const UserDetails = () => {
     sessionStorage.setItem("skipReloadRedirect", "true");
     if (!(await loadRazorpayScript())) { alert("Failed to load Razorpay."); setPayLoading(false); return; }
     try {
-      const { data } = await axios.post(backendUrl + "/api/user/create-order", { totalAmount, currency: "INR" });
+      const { data } = await axios.post("https://elementsoneastcoast.com/api/user/create-order", { totalAmount, currency: "INR" });
       new window.Razorpay({
         key: import.meta.env.VITE_RAZORPAY_KEY_ID,
         amount: data.amount, currency: data.currency,
@@ -617,7 +618,7 @@ const UserDetails = () => {
   const handlePaypalPayment = async () => {
     sessionStorage.setItem("skipReloadRedirect", "true");
     try {
-      const { data } = await axios.post(backendUrl + "/api/user/create-payment", { totalAmount });
+      const { data } = await axios.post("https://elementsoneastcoast.com/api/user/create-payment", { totalAmount });
       if (data?.approvalUrl) window.location.href = data.approvalUrl;
       else setPayLoading(false);
     } catch { setPayLoading(false); }
@@ -640,7 +641,7 @@ const UserDetails = () => {
         position: 'sticky', top: 0, zIndex: 40,
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-          <img src="./logo.png" alt="logo" className="w-14 h-10" />
+          <img src={logo} alt="no logo" className='w-14 h-10'/>
           <div style={{ lineHeight: 1 }}>
             <div style={{ fontFamily: "'DM Serif Display', serif", fontSize: 20, color: T.ink, letterSpacing: '-0.02em' }}>Elements on East Coast</div>
             <div style={{ fontSize: 12, fontWeight: 300, color: T.inkLight, marginTop: 1 }}>Photo Shoots · Chennai</div>

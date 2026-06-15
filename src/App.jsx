@@ -12,10 +12,10 @@ function App() {
       <ToastContainer />
       <Router>
         <Routes>
-          <Route path='/' element={<TestServices />} />
-           <Route path='/user' element={<TestUserDetails/>} />
-          <Route path='/success' element={<PaymentSuccess />} />
-          <Route path='/failure' element={<PaymentFailure />} />
+          <Route path='/booking' element={<TestServices />} />
+           <Route path='/booking/attendees' element={<TestUserDetails/>} />
+          <Route path='/booking/success' element={<PaymentSuccess />} />
+          <Route path='/booking/failure' element={<PaymentFailure />} />
         </Routes>
       </Router>
     </div>
