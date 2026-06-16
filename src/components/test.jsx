@@ -714,7 +714,7 @@ useEffect(() => {
 );
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', height: '100vh', background: T.cream, fontFamily: "'DM Sans', sans-serif", overflow: 'hidden' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', height: '100dvh', background: T.cream, fontFamily: "'DM Sans', sans-serif", overflow: 'hidden' }}>
       <FontLink />
       <Helmet>
         <title>Elements Photo Shoots — Book Your Session</title>
@@ -852,6 +852,7 @@ useEffect(() => {
       {/* ══════════ CART BAR ════════════════════════════════════════════════ */}
       <div style={{
         flexShrink: 0, background: T.white,
+        bottom: 0,left: 0,right: 0,
         borderTop: `1px solid ${T.border}`,
         padding: '12px 24px',
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
