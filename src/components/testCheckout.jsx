@@ -692,15 +692,16 @@ const UserDetails = () => {
                             </div>
                           </Field>
                         </div>
-
+                        <div style={{ gridColumn: 'span 2' }}>
                         <Field label="Email address" required error={emailError}>
                           <input className="ud-input" type="email" name="email" value={formData.email} onChange={handleChange} placeholder="you@example.com" required />
                         </Field>
-
+                        </div>
+                        <div style={{ gridColumn: 'span 2' }}>
                         <Field label="City" required>
                           <input className="ud-input" type="text" name="city" value={formData.city} onChange={handleChange} placeholder="Bangalore" required />
                         </Field>
-
+                        </div>
                         <div style={{ gridColumn: 'span 2' }}>
                           <Field label="Contact number" required>
                             <PhoneInput
